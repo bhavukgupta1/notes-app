@@ -9,24 +9,27 @@ import {
 import Navbar from './components/Navbar';
 
 import About from './components/About';
-
+import NoteState from './context/notes/NoteState';
 function App() {
   return (
     <>
-      <BrowserRouter>
-      <Navbar/>
-        <div>
-      
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/About" element={<About />} />
+      <NoteState>
+        <BrowserRouter>
+          <Navbar />
+          <div className='container'>
 
-          </Routes>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/About" element={<About />} />
+
+            </Routes>
 
 
-        </div>
-      </BrowserRouter>
-      </>
-)}
+          </div>
+        </BrowserRouter>
+      </NoteState>
+    </>
+  )
+}
 
 export default App;
