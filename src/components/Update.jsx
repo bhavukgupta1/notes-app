@@ -24,7 +24,7 @@ export default function Update(props) {
     const [eNote, seteNote] = useState({
         etitle: title,
         edesc: desc,
-        etag: "default "
+        etag: tag
 
     })
 

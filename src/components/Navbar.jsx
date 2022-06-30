@@ -1,17 +1,32 @@
-import React, {useEffect} from 'react'
-import { Link, useLocation }from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom'
 
 export default function Navbar() {
 
 
-    
-const location = useLocation()
-useEffect(() => {
-    // ga('send', 'pageview');
-    // console.log(location);
-  }, [location]);
+
+    const location = useLocation()
+    useEffect(() => {
+        // ga('send', 'pageview');
+        // console.log(location);
+    }, [location]);
 
 
+    const [s, sets] = useState("")
+
+    // const handleclicklogin = () => {
+
+    //     sets('active')
+
+    // }
+
+    const handleclicklogout = () => {
+
+        localStorage.clear()
+        // sets('disabled')
+
+    }
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -23,15 +38,23 @@ useEffect(() => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className={`nav-link ${location.pathname==="/"?"active":""}`} aria-current="page" to="/" >Home</Link>
+                                <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} aria-current="page" to="/" >Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className={`nav-link ${location.pathname==="/About"?"active":""}`}  aria-current="page" to="/About">About</Link>
+                                <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} aria-current="page" to="/about">About</Link>
                             </li>
-                          
+
 
                         </ul>
-                       
+
+                        <form className='d-flex'>
+
+                            <Link role='button' to='/login' className="btn btn-dark border border-light m-2 my-sm-0 " type="submit">LogIN</Link>
+                            <Link role='button' to='/logout' onClick={handleclicklogout} className={`btn btn-dark border border-light m-2 my-sm-0 ${s}`} type="submit">LogOut</Link>
+                            <Link role='button' to='/signup' className="btn btn-dark border border-light m-2 my-sm-0" type="submit">SignUp</Link>
+
+                        </form>
+
                     </div>
                 </div>
             </nav>
